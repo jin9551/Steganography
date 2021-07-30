@@ -8,6 +8,13 @@ def encoding(dec, data):
 def decoding(dec):
     return 255 if int(bin(dec)[-1]) else 0
 
+# def rl_encoding:
+# 
+# 
+# def rl_decoding:
+#
+#
+
 def encoding_pixel(color_ori, color_data):
     r = encoding(color_ori[0], color_data[0] if isinstance(color_data, tuple) else color_data)
     g = encoding(color_ori[1], color_data[1] if isinstance(color_data, tuple) else color_data)
@@ -20,6 +27,7 @@ def decoding_pixel(color_ori):
 def insert(ori_img, data_img):
     if ori_img.size != data_img.size:
         raise ValueError("Image size is different")
+    #dst = runlength 
     dst = image.new("RGB", ori_img.size, (0,0,0))
     width, height = ori_img.size
     pixels_ori = ori_img.load()
@@ -55,6 +63,7 @@ if __name__ == '__main__':
     new_img.show()
     input("encoding is done\npress and start decoding")
     decoding_img = extract(new_img)
+    #rl_decoding
     decoding_img.show()
     decoding_img.save("./decoding.png")
     input("decoding is done")
